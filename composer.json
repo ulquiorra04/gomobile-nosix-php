@@ -1,0 +1,20 @@
+{
+    "name": "gomobile/gomobile-nosix-php",
+    "description": "Gomobile Bundle for new osix",
+    "autoload": {
+        "psr-4": {
+            "Gomobile\\GomobileNOsixBundle\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ABDELHAMID RAHMAOUI",
+            "email": "rahmaoui.developer@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "symfony/framework-bundle": "^4.3 || ^5.4",
+        "symfony/http-client": "^4.3 || ^5.4"
+    }
+}
