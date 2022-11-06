@@ -4,7 +4,6 @@
 namespace Gomobile\GomobileNOsixBundle\Core;
 
 
-use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpClient\NativeHttpClient;
 
 class GomobileNOsix
@@ -14,12 +13,12 @@ class GomobileNOsix
     protected $isLocal;
     protected $client;
 
-    public function __construct($login, $password, NativeHttpClient $httpClient, $isLocal = false)
+    public function __construct($login, $password, $isLocal = false)
     {
         $this->login = $login;
         $this->password = $password;
         $this->isLocal = $isLocal;
-        $this->client = $httpClient;
+        $this->client = new NativeHttpClient();
     }
 
     public function call ()
