@@ -15,7 +15,7 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder("gomobile_nosix");
+        $treeBuilder = new TreeBuilder("gomobile_n_osix");
         $treeBuilder->getRootNode()
             ->children()
             ->scalarNode("login")->defaultValue("")->end()
