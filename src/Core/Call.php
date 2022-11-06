@@ -62,7 +62,7 @@ class Call extends Base
         if(isset($options['campaign_name']))
             $params["campaignName"] = $options['campaign_name'];
 
-        $this->url = parent::BASE_LOCAL_DOMAIN_V2 . parent::POST_MULTIPLE_SIMPLE_CALL;
+        $this->url = parent::BASE_LOCAL_DOMAIN . parent::POST_MULTIPLE_SIMPLE_CALL;
 
         return $this->makeCall($this->url, $params);
     }
@@ -115,7 +115,7 @@ class Call extends Base
         if(isset($options['campaign_name']))
             $params["campaignName"] = $options['campaign_name'];
 
-        $this->url = parent::BASE_LOCAL_DOMAIN_V2 . parent::POST_MULTIPLE_DYNAMIC_CALL;
+        $this->url = parent::BASE_LOCAL_DOMAIN . parent::POST_MULTIPLE_DYNAMIC_CALL;
 
         return $this->makeCall($this->url, $params);
     }
