@@ -1,6 +1,10 @@
 {
     "name": "gomobile/gomobile-nosix-php",
     "description": "Gomobile Bundle for new osix",
+    "keywords": ["api", "voice", "gomobile", "osix V2"],
+    "homepage": "https://github.com/ulquiorra04/gomobile-php",
+    "type": "library",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Gomobile\\GomobileNOsixBundle\\": "src/"
