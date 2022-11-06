@@ -21,4 +21,19 @@ class Base
         $this->httpClient = $httpClient;
     }
 
+    public function error ($status, $message) {
+        return [
+            "status" => $status,
+            "description" => $message,
+        ];
+    }
+
+    public function success ($status, $message, $options) {
+        return [
+            'status' => $status,
+            'description' => $message,
+            "options" => $options
+        ];
+    }
+
 }

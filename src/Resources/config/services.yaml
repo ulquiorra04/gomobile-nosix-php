@@ -1,0 +1,7 @@
+services:
+    Gomobile\GomobileNOsixBundle\Core\GomobileNOsix:
+        public: true
+        arguments:
+            - "%gomobile_nosix.login%"
+            - "%gomobile_nosix.password%"
+            - "%gomobile_nosix.is_local%"

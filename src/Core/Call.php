@@ -145,9 +145,9 @@ class Call extends Base
         if($response->getStatusCode() == 200) {
             $result = json_decode($response->getContent());
             if($result->status == 1)
-                return $this->success($result->message, $result->data);
+                return $this->success($result->status, $result->message, $result->data);
             else
-                return $this->error($result->message);
+                return $this->error($result->status, $result->message);
         } else {
             return $this->error("error while processing");
         }
