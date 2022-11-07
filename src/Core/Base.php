@@ -34,11 +34,10 @@ class Base
         ];
     }
 
-    public function success ($status, $message, $options) {
+    public function success ($status, $message) {
         return [
             'status' => $status,
-            'description' => $message,
-            "options" => $options
+            'description' => $message
         ];
     }
 

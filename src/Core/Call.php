@@ -45,7 +45,7 @@ class Call extends Base
 
             if(!NumberHelper::isValidNationalNumber($phoneNumber->phone))
                 return $this->error(-3, "incorrect format for phone number $phoneNumber->phone");
-            
+
             array_push($phones_osix, ["phone" => $phoneNumber->phone]);
         }
 
@@ -132,7 +132,7 @@ class Call extends Base
         if($response->getStatusCode() == 200) {
             $result = json_decode($response->getContent());
             if($result->status == 1)
-                return $this->success($result->status, $result->message, $result->data);
+                return $this->success($result->status, $result->message);
             else
                 return $this->error($result->status, $result->message);
         } else {
