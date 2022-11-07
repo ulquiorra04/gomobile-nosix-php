@@ -45,25 +45,15 @@ class Call extends Base
 
             if(!NumberHelper::isValidNationalNumber($phoneNumber->phone))
                 return $this->error(-3, "incorrect format for phone number $phoneNumber->phone");
-
-
+            
             array_push($phones_osix, ["phone" => $phoneNumber->phone]);
         }
 
         $params = [
             'scenarioId' => $scenarioId,
-            'phones' => json_encode($phones_osix),
+            'phones' => $phones_osix,
             'campaign'  => $options
         ];
-
-        /*
-        if(isset($options["campaign"]['sda']))
-            $params["campaign"]["sda"] = $options["campaign"]["sda"];
-        if(isset($options["campaign"]['date_time']))
-            $params["campaign"]['date_time'] = $options["campaign"]['date_time'];
-        if(isset($options["campaign"]['name']))
-            $params["campaign"]['name'] = $options["campaign"]['name'];
-        */
 
         $this->url = parent::BASE_LOCAL_DOMAIN . parent::POST_MULTIPLE_SIMPLE_CALL;
 
@@ -103,12 +93,12 @@ class Call extends Base
                 return $this->error(-3, "incorrect format for phone number $phoneNumber->phone");
 
 
-            array_push($phones_osix, ["phone" => $phoneNumber->phone]);
+            array_push($phones_osix, (array) $phoneNumber);
         }
 
         $params = [
             'scenarioId' => $scenarioId,
-            'phones' => json_encode($phones_osix),
+            'phones' => $phones_osix,
             'campaign' => $options
         ];
 
@@ -146,7 +136,7 @@ class Call extends Base
             else
                 return $this->error($result->status, $result->message);
         } else {
-            return $this->error($response->getStatusCode(), "Server Error");
+            return $this->error($response->getStatusCode(), $response->getContent());
         }
     }
 
