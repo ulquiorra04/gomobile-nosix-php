@@ -146,7 +146,7 @@ class Call extends Base
             else
                 return $this->error($result->status, $result->message);
         } else {
-            return $this->error(-10, "error while processing");
+            return $this->error($response->getStatusCode(), "Server ERROR");
         }
     }
 
