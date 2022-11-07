@@ -134,7 +134,7 @@ class Call extends Base
             "POST",
             $url,
             [
-                "body" => $params,
+                "json" => $params,
                 "auth_basic" => [$this->login, $this->password]
             ]
         );
