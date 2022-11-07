@@ -52,7 +52,7 @@ class Call extends Base
 
         $params = [
             'scenarioId' => $scenarioId,
-            'users' => json_encode($phones_osix),
+            'phones' => json_encode($phones_osix),
             'campaign'  => $options
         ];
 
@@ -108,7 +108,7 @@ class Call extends Base
 
         $params = [
             'scenarioId' => $scenarioId,
-            'users' => json_encode($phones_osix),
+            'phones' => json_encode($phones_osix),
             'campaign' => $options
         ];
 
