@@ -19,7 +19,7 @@ class Call extends Base
      * @version 1.0
      * @param $phones [{"phoneNumber": "0707071290"}, {"phoneNumber": "0707070136"}]
      * @param $scenarioId
-     * @param array $options
+     * @param array $options ["sda" => "05XXXXXXXX", "name" => "CMP_NAME", "date_time" => "2022-11-07 10:00:00", "config" => ["interval" => "04:00:00"]]
      * @return array
      * @throws \Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface
@@ -52,15 +52,18 @@ class Call extends Base
 
         $params = [
             'scenarioId' => $scenarioId,
-            'users' => json_encode($phones_osix)
+            'users' => json_encode($phones_osix),
+            'campaign'  => $options
         ];
 
-        if(isset($options['sda']))
-            $params["sda"] = $options['sda'];
-        if(isset($options['call_date_time']))
-            $params["callDateTime"] = $options['call_date_time'];
-        if(isset($options['campaign_name']))
-            $params["campaignName"] = $options['campaign_name'];
+        /*
+        if(isset($options["campaign"]['sda']))
+            $params["campaign"]["sda"] = $options["campaign"]["sda"];
+        if(isset($options["campaign"]['date_time']))
+            $params["campaign"]['date_time'] = $options["campaign"]['date_time'];
+        if(isset($options["campaign"]['name']))
+            $params["campaign"]['name'] = $options["campaign"]['name'];
+        */
 
         $this->url = parent::BASE_LOCAL_DOMAIN . parent::POST_MULTIPLE_SIMPLE_CALL;
 
@@ -72,7 +75,7 @@ class Call extends Base
      * @version 1.0
      * @param $phones [{"phoneNumber": "0707071290", "user_amount": 200}, {"phoneNumber": "0707070136", "user_amount": 400}]
      * @param $scenarioId
-     * @param array $options
+     * @param array $options ["sda" => "05XXXXXXXX", "name" => "CMP_NAME", "date_time" => "2022-11-07 10:00:00", "config" => ["interval" => "04:00:00"]]
      * @return array
      * @throws \Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface
@@ -105,15 +108,9 @@ class Call extends Base
 
         $params = [
             'scenarioId' => $scenarioId,
-            'users' => json_encode($phones_osix)
+            'users' => json_encode($phones_osix),
+            'campaign' => $options
         ];
-
-        if(isset($options['sda']))
-            $params["sda"] = $options['sda'];
-        if(isset($options['call_date_time']))
-            $params["callDateTime"] = $options['call_date_time'];
-        if(isset($options['campaign_name']))
-            $params["campaignName"] = $options['campaign_name'];
 
         $this->url = parent::BASE_LOCAL_DOMAIN . parent::POST_MULTIPLE_DYNAMIC_CALL;
 

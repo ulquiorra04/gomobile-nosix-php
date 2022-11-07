@@ -12,6 +12,7 @@ class Base
     protected $password;
     protected $isLocal;
     protected $httpClient;
+    protected $url;
 
     const BASE_LOCAL_DOMAIN = "http://10.40.1.91:81/external/";
 
