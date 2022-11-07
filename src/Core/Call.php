@@ -31,23 +31,23 @@ class Call extends Base
         $phones = json_decode($phones);
         $phones_osix = [];
         if(!is_array($phones) || empty($phones))
-            return $this->error("You have to send an array of phone numbers");
+            return $this->error(0, "You have to send an array of phone numbers");
 
         if(!NumberHelper::isValidArrayPhoneNumbers($phones))
-            return $this->error("You have to provide a valid phone numbers");
+            return $this->error(-3, "You have to provide a valid phone numbers");
 
         foreach ($phones as $phoneNumber) {
             if(is_string($phoneNumber))
                 $phoneNumber = json_decode($phoneNumber);
 
-            if(!property_exists($phoneNumber, "phoneNumber"))
-                return $this->error("Please provide a phoneNumber property for the object");
+            if(!property_exists($phoneNumber, "phone"))
+                return $this->error(-1, "Please provide a phoneNumber property for the object");
 
-            if(!NumberHelper::isValidNationalNumber($phoneNumber->phoneNumber))
-                return $this->error("incorrect format for phone number $phoneNumber->phoneNumber");
+            if(!NumberHelper::isValidNationalNumber($phoneNumber->phone))
+                return $this->error(-3, "incorrect format for phone number $phoneNumber->phone");
 
 
-            array_push($phones_osix, ["phone" => $phoneNumber->phoneNumber]);
+            array_push($phones_osix, ["phone" => $phoneNumber->phone]);
         }
 
         $params = [
@@ -87,23 +87,23 @@ class Call extends Base
         $phones = json_decode($phones);
         $phones_osix = [];
         if(!is_array($phones) || empty($phones))
-            return $this->error("You have to send an array of phone numbers");
+            return $this->error(0, "You have to send an array of phone numbers");
 
         if(!NumberHelper::isValidArrayPhoneNumbers($phones))
-            return $this->error("You have to provide a valid phone numbers");
+            return $this->error(-3, "You have to provide a valid phone numbers");
 
         foreach ($phones as $phoneNumber) {
             if(is_string($phoneNumber))
                 $phoneNumber = json_decode($phoneNumber);
 
-            if(!property_exists($phoneNumber, "phoneNumber"))
-                return $this->error("Please provide a phoneNumber property for the object");
+            if(!property_exists($phoneNumber, "phone"))
+                return $this->error(-1, "Please provide a phoneNumber property for the object");
 
-            if(!NumberHelper::isValidNationalNumber($phoneNumber->phoneNumber))
-                return $this->error("incorrect format for phone number $phoneNumber->phoneNumber");
+            if(!NumberHelper::isValidNationalNumber($phoneNumber->phone))
+                return $this->error(-3, "incorrect format for phone number $phoneNumber->phone");
 
 
-            array_push($phones_osix, ["phone" => $phoneNumber->phoneNumber]);
+            array_push($phones_osix, ["phone" => $phoneNumber->phone]);
         }
 
         $params = [
@@ -146,7 +146,7 @@ class Call extends Base
             else
                 return $this->error($result->status, $result->message);
         } else {
-            return $this->error($response->getStatusCode(), $response->getContent());
+            return $this->error($response->getStatusCode(), "Server Error");
         }
     }
 
