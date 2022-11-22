@@ -16,8 +16,8 @@ class Base
 
     const BASE_LOCAL_DOMAIN = "http://10.40.1.91:81/external/";
 
-    const POST_MULTIPLE_SIMPLE_CALL = "post_simple_call";
-    const POST_MULTIPLE_DYNAMIC_CALL = "post_dynamic_call";
+    const POST_MULTIPLE_SIMPLE_CALL = "post_simple_call_v2";
+    const POST_MULTIPLE_DYNAMIC_CALL = "post_dynamic_call_v2";
 
     public function __construct($login, $password, HttpClientInterface $httpClient, $isLocal = false)
     {
