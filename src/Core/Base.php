@@ -19,6 +19,8 @@ class Base
     const POST_MULTIPLE_SIMPLE_CALL = "post_simple_call_v2";
     const POST_MULTIPLE_DYNAMIC_CALL = "post_dynamic_call_v2";
 
+    const POST_FILE_CALL = "post_file_call";
+
     public function __construct($login, $password, HttpClientInterface $httpClient, $isLocal = false)
     {
         $this->login = $login;
