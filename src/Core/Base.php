@@ -14,7 +14,7 @@ class Base
     protected $httpClient;
     protected $url;
 
-    const BASE_LOCAL_DOMAIN = "http://10.40.1.91:81/external/";
+    const BASE_LOCAL_DOMAIN = "http://10.40.100.52:8080/external/";
 
     const POST_MULTIPLE_SIMPLE_CALL = "post_simple_call_v2";
     const POST_MULTIPLE_DYNAMIC_CALL = "post_dynamic_call_v2";
