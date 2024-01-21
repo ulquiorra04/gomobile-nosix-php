@@ -5,6 +5,7 @@ namespace Gomobile\GomobileNOsixBundle\Core;
 
 
 use Gomobile\GomobileNOsixBundle\lib\NumberHelper;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class Call extends Base
@@ -61,8 +62,6 @@ class Call extends Base
     }
 
     /**
-     * @author ABDELHAMID RAHMAOUI
-     * @version 1.0
      * @param $phones [{"phoneNumber": "0707071290", "user_amount": 200}, {"phoneNumber": "0707070136", "user_amount": 400}]
      * @param $scenarioId
      * @param array $options ["sda" => "05XXXXXXXX", "name" => "CMP_NAME", "date_time" => "2022-11-07 10:00:00", "config" => ["interval" => "04:00:00"]]
@@ -71,8 +70,10 @@ class Call extends Base
      * @throws \Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
+     *@author ABDELHAMID RAHMAOUI
+     * @version 1.0
      */
-    public function postMultipleDynamicCall ($phones, $scenarioId, $options=[])
+    public function postMultipleDynamicCall ($phones, int $scenarioId, array $options=[])
     {
         $phones = json_decode($phones);
         $phones_osix = [];
@@ -105,6 +106,18 @@ class Call extends Base
         $this->url = parent::BASE_LOCAL_DOMAIN . parent::POST_MULTIPLE_DYNAMIC_CALL;
 
         return $this->makeCall($this->url, $params);
+    }
+
+    public function postFileCall (File $file, int $scenarioId, array $options = [])
+    {
+        $url = "";
+        $response = $this->httpClient->request(
+            "POST",
+            $url,
+            [
+                "body" => ["file" => $file]
+            ]
+        );
     }
 
     /**
